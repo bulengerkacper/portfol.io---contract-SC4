@@ -22,32 +22,30 @@ contract portfolio {
         static_task_id=0;
     }
 
-function create_tasks(
-string memory _name,
-address  _from,
-address  _to,
-string memory _content,
-string memory _crypto,
-uint256 _amount )  public payable {
-Task memory _inject = Task(++static_task_id,_name,_from,_to,_content,_crypto,_amount,"new");
-tasks.push(_inject);
-}
+    function create_tasks(string memory _name, address _from,
+        address  _to,
+        string memory _content,
+        string memory _crypto,
+        uint256 _amount )  public payable {
 
-function take_task(address worker, Task memory task) public payable {
- task.to=worker;
- task.status="taken";
-}
+        Task memory _inject = Task(++static_task_id,_name,_from,_to,_content,_crypto,_amount,"new");
+        tasks.push(_inject);
+    }
 
-function pay_for_task(Task memory task) public payable only_admin {
-    task.status="done";
-    payable(task.to).transfer(task.amount);
-}
+    function take_task(address worker, Task memory task) public payable {
+    task.to=worker;
+    task.status="taken";
+    }
 
+    function pay_for_task(Task memory task) public payable only_admin {
+        task.status="done";
+        payable(task.to).transfer(task.amount);
+    }
 
-modifier only_admin {
-    require(msg.sender == manager," you are not an admin");
-    _;
-}
+    modifier only_admin {
+        require(msg.sender == manager," you are not an admin");
+        _;
+    }
 
 
 }
