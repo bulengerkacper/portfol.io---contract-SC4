@@ -1,13 +1,9 @@
 # Sample Hardhat Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Another smart contract in solidity on hardhat env.  
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+Functionalities:  
+Employer side:  
+Defining a job and its price - locking eth in contract  
+Employee side:  
+When  says its done 'admin role' admin verifies with employer if the salary can be payed and pay.  
