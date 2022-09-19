@@ -21,12 +21,11 @@ contract portfolio {
         static_task_id=0;
     }
 
-    function create_tasks(string memory _name, address _from,
+    function create_tasks(string calldata _name, address _from,
         address  _to,
-        string memory _content,
-        string memory _crypto,
-        uint256 _amount,
-        string memory status)  public payable {
+        string calldata _content,
+        string calldata _crypto,
+        uint256 _amount)  public payable {
 
         Task memory _inject = Task(++static_task_id,_name,_from,_to,_content,_crypto,_amount,"new");
         tasks.push(_inject);
